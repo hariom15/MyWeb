@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container ">
+  <h2 style="color: black; text-align: center; padding: 5px;">signup form</h2>
+  
+  <form action="" method="post" name="frm" onsubmit="emp_login(event)" style="background-color: aqua;">
+    <div class="form-group  shadow" >
+      <label for="Username">Username</label>
+      <input type="text" class="form-control" id="uname" placeholder="Enter Username" name="Username">
+    </div>
+    <div class="form-group shadow">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+    </div>
+    <div class="form-group form-check">
+      <!-- <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+      </label> -->
+    </div>
+    <button type="submit" class="btn btn-sm" style="color: black; text-align: center; background-color: brown; justify-content: center;">Login</button>
+  </form>
+</div>
+
+<script>
+  function emp_login(event){
+    event.preventDefault()
+    let logindata=[{"name": "hariom", "pass": 123}]
+    localStorage.setItem("emp_login",JSON.stringify(logindata))
+    // console.log(logindata)
+    // let name=frm.uname.value;
+    let password=frm.pswd.value;
+    let upassword=logindata[0].pass
+ if( password == upassword){
+  window.location="dashboard.html"
+ }
+ else{
+  alert("invalid password")
+ }
+  }
+</script>
+</body>
+</html>

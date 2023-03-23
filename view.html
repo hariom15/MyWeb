@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <title>Kwitter app</title>
+</head>
+
+<body>
+    <div class="container">
+
+    
+    <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="dashboard.html">admin dashboard</a>
+          </li>
+        </ul>
+       
+      </nav>
+      <div class="bg-primary text-center"><h5 class="text-white">view post</h5></div>
+
+<div class="container">
+    <div class="col-sm-12">
+      <div class="row justify-content-center"> 
+        <div class="col-sm-5 card p-4"> 
+       <p style="border: 1px solid;" class="p-1 shadow" id="vname"></p>
+       <p style="border: 1px solid;" class="p-1 shadow"  id="veid"></p>
+       <p style="border: 1px solid;" class="p-1 shadow"  id="vpass"></p>
+       <p  style="border: 1px solid;" class="p-1 shadow" id="vnum"></p>
+       <p style="border: 1px solid;" class="p-1 shadow"  id="vcname"></p>
+       <p style="border: 1px solid;" class="p-1 shadow"  id="vceid"></p>
+       <p  style="border: 1px solid;" class="p-1 shadow"  id="vcpost"></p>
+       <button class="btn btn-primary" onclick="home()">Home</button>
+      </div>
+    </div>
+</div>
+    </div>
+</div>
+</body>
+
+<script>
+    function view_post(){
+    let single_data=localStorage.getItem("singledata")
+    let all_data=localStorage.getItem("emp_data")
+    if(all_data != null){
+        view_Arr=JSON.parse(all_data)
+    }else{
+        view_Arr=[]
+    }
+    // console.log(view_Arr)
+    let new_v_Arr=view_Arr.filter((items,index)=>{
+        return single_data == index
+    })
+    // console.log(new_v_Arr)
+    document.getElementById("vname").innerHTML=new_v_Arr[0].uname
+    document.getElementById("veid").innerHTML=new_v_Arr[0].uemail
+    document.getElementById("vpass").innerHTML=new_v_Arr[0].upassword
+    document.getElementById("vnum").innerHTML=new_v_Arr[0].unumber
+    document.getElementById("vcname").innerHTML=new_v_Arr[0].uc_name
+    document.getElementById("vceid").innerHTML=new_v_Arr[0].uc_eid
+    document.getElementById("vcpost").innerHTML=new_v_Arr[0].udesig_post
+    }
+    view_post()
+
+
+    function home(){
+        window.location="dashboard.html"
+    }
+</script>
+</html>
